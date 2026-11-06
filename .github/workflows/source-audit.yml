@@ -1,0 +1,51 @@
+name: Check official guideline sources
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 6 * * 1'
+permissions:
+  contents: read
+jobs:
+  source-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check availability and public source fingerprints
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, hashlib, urllib.request, urllib.parse, os, datetime
+          from pathlib import Path
+          catalog=json.loads(Path('guidelines.json').read_text())
+          domains={'kennisplatformfysiotherapie.nl','richtlijnen.nhg.org','richtlijnendatabase.nl','demedischspecialist.nl'}
+          def allowed(url):
+              p=urllib.parse.urlparse(url)
+              return p.scheme=='https' and (p.hostname or '').removeprefix('www.') in domains
+          class Redirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, headers, newurl):
+                  if not allowed(newurl): raise ValueError('Redirect outside official sources')
+                  return super().redirect_request(req,fp,code,msg,headers,newurl)
+          opener=urllib.request.build_opener(Redirect())
+          baseline_path=Path('.github/source-baseline.json')
+          baseline=json.loads(baseline_path.read_text()) if baseline_path.exists() else {}
+          lines=['# Official-source availability check', '', 'This is a technical website-change signal, not a clinical review or guarantee that recommendations are current.', '', 'Collection reviewed on: '+catalog['reviewed_on'], '', '| Source | Status | SHA-256 |','|---|---|---|']
+          for doc in catalog['documents']:
+              url=doc.get('source_url')
+              if not url:
+                  lines.append('| '+doc['id']+' | Supplied source; no public URL monitored | — |');continue
+              try:
+                  if not allowed(url): raise ValueError('Unapproved URL')
+                  with opener.open(urllib.request.Request(url,headers={'User-Agent':'Heldr guideline availability check'}),timeout=25) as r:
+                      if not allowed(r.url): raise ValueError('Unapproved destination')
+                      body=r.read(8*1024*1024+1)
+                      if len(body)>8*1024*1024: raise ValueError('Response exceeds limit')
+                  digest=hashlib.sha256(body).hexdigest()
+                  old=baseline.get(url)
+                  result='No baseline; review required' if old is None else 'Website changed; clinical review required' if old!=digest else 'Same website fingerprint; not a clinical currency guarantee'
+                  lines.append('| '+doc['id']+' | '+result+' | '+digest+' |')
+              except Exception as e:
+                  lines.append('| '+doc['id']+' | Could not check: '+type(e).__name__+' | — |')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out: out.write('\n'.join(lines)+'\n')
+          print('\n'.join(lines))
+          PY
