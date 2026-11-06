@@ -6,3 +6,5 @@
 #source-diagnostic-text{white-space:pre-wrap;overflow-wrap:anywhere;font:10px/1.6 monospace}#source-recovery h3{margin-top:0}
 
 .som-layout{border-bottom:1px solid var(--line);padding:4px 0 16px;margin-bottom:18px;font-size:11px}.som-layout li{margin-block:9px}.som-link{display:inline-block;padding:8px 0;font-weight:600}
+
+#writing-preview{border-top:2px solid var(--green);margin-top:18px;padding-top:8px}#preview-fields{max-height:400px;overflow-y:auto}.preview-card{padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}.preview-card h3{font-size:11px;margin:0 0 6px}#source-age:empty,#run-time:empty{display:none}
