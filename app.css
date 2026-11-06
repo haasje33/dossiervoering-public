@@ -13,3 +13,5 @@
 
 /* Keep the work area available in a narrow split view. */
 header{position:static;padding:12px 18px}.brand-logo{width:88px}.settings:not([open]){padding:4px 0;margin:8px 0;border:0;border-bottom:1px solid var(--line)}.som-layout{padding:0;margin:0 0 8px}.view{scroll-margin-top:52px}nav{top:0;margin-bottom:10px}.overview-toolbar{top:43px;padding-top:4px}.overview-toolbar h2{font-size:16px;margin:2px 0 6px}
+
+.required-label{color:#006f63}.missing-required{border-left:3px solid var(--orange);padding-left:10px}.proposal-label{color:#71418b;font-size:10px;margin:3px 0 7px}#measurement-proposals article{padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}#measurement-proposals details{margin-top:6px}

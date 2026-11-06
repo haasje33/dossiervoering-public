@@ -6,7 +6,7 @@ Openbare browserproefversie: https://haasje33.github.io/dossiervoering-public/
 2. Bevestig dat je invoer vooraf geanonimiseerd is en naar Claude mag. Typ of plak je anamnese, onderzoek en eigen beoordeling.
 3. Klik **Schrijf dossier**. Dit gebruikt betaald API-tegoed bij Anthropic. Terwijl je typt wordt niets naar Claude verstuurd.
 4. Lees en bewerk alle ingevulde velden in het dossieroverzicht. Kopieer direct per veld, onderdeel of als geheel; er zijn geen goedkeurvinkjes of verplichte Volgende-stappen. Onder **Meedenken** staan afzonderlijke klinische voorstellen; onder **Controle** ontbrekende gegevens.
-5. Plak een los veld in het bijbehorende SOM-vak. Gecombineerde tekst bevat veldnamen en wordt door SOM niet automatisch verdeeld. De assistent leest geen gegevens uit SOM. Keuzes, scores en toestemmingen controleer je zelf in SOM.
+5. Plak een los veld in het bijbehorende SOM-vak. Gecombineerde tekst bevat veldnamen en wordt door SOM niet automatisch verdeeld. De assistent leest geen gegevens uit SOM. Keuzes en scores vul je zelf in SOM in. Toestemming blijft uitsluitend in SOM; de assistent vraagt deze niet opnieuw uit.
 
 Je sleutel en de huidige geanonimiseerde casus gaan rechtstreeks vanuit de browser naar `api.anthropic.com`, niet via GitHub of een eigen proxy. De app slaat geen sleutel of casus op. Voor verwerking bij Anthropic gelden jullie afspraken met die leverancier. Nieuwe casus wist de casus en behoudt de sleutel voor het volgende dossier. Casus afsluiten wist ook de sleutel. Vernieuwen/sluiten verliest het werk. Het systeemklembord wordt niet automatisch gewist.
 
@@ -27,3 +27,5 @@ Versie 0.5.0: **directe vraaghulp tijdens het typen**, zonder AI of netwerkverzo
 Openbare richtlijnfragmenten blijven maximaal 30 minuten alleen in dit venster beschikbaar voor hetzelfde algemene klachtgebied en model. Nieuwe casus behoudt deze openbare bronnen en de ingevulde sleutel. Sleutel wijzigen/wissen, casus afsluiten en het venster sluiten wissen deze cache. Er worden geen patiëntnotities of eerdere dossierantwoorden in bewaard.
 
 De technische tests bevestigen de lokale vraaghulp en de workflow, inclusief kopiëren zonder vinkjes en behoud van concepten bij fouten. Ze gebruiken onderschepte API-antwoorden en meten geen werkelijke Claude-responstijd. Een vrijwel direct volledig AI-antwoord kan niet worden gegarandeerd.
+
+Versie 0.5.1: het beloop wordt verplicht in VALTOIS-kopjes uitgewerkt, met alleen de aangeleverde onderdelen. De verplichte hulpvraag blijft zichtbaar als deze leeg is. Claude mag hulpvragen, behandeldoelen en PSK-activiteiten voorstellen op basis van beschreven beperkingen. Afgeleide voorstellen zijn herkenbaar als ‘te bevestigen’, ook na kopiëren; je kunt ze direct aanpassen. Expliciete NRS-/PSK-uitkomsten verschijnen als aparte invoervoorstellen met bronpassages; ontbrekende scores worden niet geschat. Toestemmingen zijn volledig buiten de assistent gehouden om dubbele handelingen te voorkomen.
