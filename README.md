@@ -1,4 +1,4 @@
-# Heldr Dossierassistent 0.7.4
+# Heldr Dossierassistent 0.8.0
 
 Open de [browserapp](https://haasje33.github.io/dossiervoering-public/) naast SOM in Chrome. Geen installatie nodig; deze proefversie heeft geen login.
 
@@ -21,7 +21,13 @@ Er is geen vaste tekenlimiet of stilzwijgende afkapping van aantekeningen. Past 
 
 De patiënt hoeft niet aanwezig te zijn. **Aanbevolen voor een volgend gesprek** bevat niet-urgente vragen en overwegingen. Deze blokkeren schrijven en kopiëren niet. Tegenstrijdigheden voor de therapeut en mogelijke urgente signalen staan apart. Toestemming wordt uitsluitend in SOM afgehandeld; de assistent vraagt dit niet opnieuw uit.
 
-**Zoek aanvullende bronnen** werkt onafhankelijk van het schrijven. Het gebruikt algemene onderwerpen en uitsluitend Kennisplatform Fysiotherapie, NHG, Richtlijnendatabase en de Federatie Medisch Specialisten. Openbare passages kunnen maximaal 30 minuten in dit venster worden hergebruikt. De startcollectie is beperkt en inhoudelijk gecontroleerd op 5 november 2026. Versie en dekking zijn zichtbaar; er wordt geen volledige actuele richtlijndekking beloofd. Een wekelijkse alleen-lezen bronmonitor rapporteert bereikbaarheid in GitHub Actions en actualiseert geen klinische adviezen. Technische toegangsproblemen worden niet als inhoudelijke hercontrole gepresenteerd.
+De algemene richtlijnenindex bevat ruim 14.000 brononderdelen uit KNGF/Kennisplatform Fysiotherapie, NHG, Richtlijnendatabase en de Federatie Medisch Specialisten. De index wordt op GitHub gehost en is niet beperkt tot een vaste aandoeningenlijst. GitHub bevat geen volledige richtlijnteksten.
+
+Bij schrijven of handmatig **Denk mee** worden relevante oorspronkelijke modules met je Claude API gelezen. De bronaanvraag bevat alleen openbare bron-ID's, titels en URL's; geen aantekeningen. PDF-tekst wordt lokaal in de browser verwerkt. Broninhoud wordt maximaal dertig minuten hergebruikt. Een eerste bronophaling kan extra tijd en API-invoertokens kosten; het brongebruik staat apart vermeld. Automatische denkhulp tijdens typen gebruikt beschikbare bronnen en gecontroleerde feiten en start geen extra bronophalingen.
+
+Per relevante bron wordt de toepassing op de casus expliciet afgewogen. Dat staat buiten de kopieerbare tekst. Niet leesbare of ontbrekende broninhoud wordt vermeld en blokkeert schrijven niet. Ontbrekende scores worden niet geschat. Een algemeen register voert beoordeelde formules uit; GOLD 2026 ABE is de eerste gecontroleerde regel. Niet alle richtlijntools zijn daarmee al getoetst. Er wordt geen volledige klinisch gevalideerde dekking beloofd. De optionele aanvullende zoekactie en de alleen-lezen bereikbaarheidsmonitor blijven afzonderlijke functies.
+
+De app blijft op GitHub Pages, voorlopig zonder login. Geen andere hostingaccount of installatie bij medewerkers nodig.
 
 Sleutel en geanonimiseerde gegevens gaan rechtstreeks vanuit de browser naar Anthropic, niet via GitHub of een eigen proxy. De app bewaart ze alleen in venstergeheugen. Nieuwe casus wist de casus en behoudt de sleutel; afsluiten wist ook de sleutel. Verversen/sluiten verliest het werk. Het systeemklembord valt buiten de app.
 
